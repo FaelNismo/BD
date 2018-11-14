@@ -1,0 +1,18 @@
+create table tbl_medicos (
+n_CRM int primary key, nome_medico varchar(45), cpf_medico int not null, cidade varchar(45), especialidade varchar(45), fk_NroAmbulatorio int,
+foreign key(fk_NroAmbulatorio) references tbl_ambulatorio (nroAmbulatorio) 
+);
+create table tbl_paciente(codp int primary key auto_increment, cpf_paciente int not null, nome_paciente varchar(45), idade_paciente int not null, cidade_paciente varchar(45), doenca varchar(45)
+);
+create table tbl_Funcionario (
+codf  int primary key auto_increment, cpf_funcionario int not null, nome varchar(45),idade int not null,cidade varchar(45),salario decimal(9.2)
+);
+create table tbl_ambulatorio (
+nroAmbulatorio int primary key auto_increment, andar int not null, capacidadade int not null
+);
+create table consultas(
+FK_n_CRM int, FK_codp int, data_hora datetime,
+primary key(FK_n_CRM,FK_codp), 
+foreign key (Fk_n_CRM) references tbl_medicos (n_CRM),
+foreign key (FK_codp) references tbl_paciente(codp)
+);
